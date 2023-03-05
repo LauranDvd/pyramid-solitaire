@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="extern/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="extern/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="extern/popper.min.js" ></script>
+    <script src="extern/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+
+    <title>Solitaire Pyramid</title>
+</head>
+<body onload="enablePopovers();">
+    <div id="divBoard"></div>  <!-- the board -->
+    <div style="margin-left: 30%; margin-right: 30%; text-align: center;">
+        <button onclick="startGame();" id="btnStart" class="btn btn-outline-primary btn-block btn-lg">Start game</button>
+    </div>
+
+    <!-- will be on the right -->
+    <div id="divScore" class="text-success">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div id="gameControls">
+        <span id="divHand"></span>  <!-- the separate card(s) -->
+        <i class="bi bi-arrow-right-square" onclick="nextHandUI();" id="btnNextHand"
+           onmouseenter="$(this).removeClass('bi-arrow-right-square'); $(this).addClass('bi-arrow-right-square-fill');"
+           onmouseleave="$(this).addClass('bi-arrow-right-square'); $(this).removeClass('bi-arrow-right-square-fill');"
+        ></i>
+        <div id="infoRotations" class="text-info">
+            Full hands: <span id="noRotations">0</span>
+        </div>
+
+        <button onclick="hint(); resetHintTimeout();" class="btn btn-warning" id="btnHint">
+            think <i class="bi bi-emoji-smile-fill"></i>
+        </button>
+        <button onclick="undo(); updateUI();" class="btn btn-danger">undo</button>
+        <button onclick="redo(); updateUI();" class="btn btn-danger" id="redo" disabled>redo</button>
+        <button onclick="checkWin(); $(this).off('click');" class="btn btn-danger" id="btnOracle"
+                data-container="body" data-toggle="popover" data-placement="bottom" data-content="Thinking..." data-html="true">
+            ask the oracle <i class="bi bi-magic">
+        </i></button>
+
+        <div id="message">
+            <!-- send messages to the player -->
+        </div>
+    </div>
+</body>
+</html>

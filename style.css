@@ -1,0 +1,130 @@
+body {
+    text-align: center;
+    background: navajowhite !important;
+}
+
+.tableGame {
+    width: 70%;
+    height: 10vh;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: -20px;
+}
+
+#firstTableRow {
+    margin-top: 2px !important;
+}
+
+#divHand {
+    margin: 5px;
+}
+
+.chosen {
+    border: 4px solid #ffffa2 !important;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeInOut {
+    0% {opacity: 1;}
+    50% {opacity: 0.3;}
+    100% {opacity: 1;}
+}
+
+.hinted {
+    background: mediumslateblue !important;
+    animation: fadeInOut 3s infinite;
+}
+
+#btnNextHand {
+    display: none;
+    font-size: 200%;
+    vertical-align: center;
+}
+
+#btnNextHand:hover {
+    cursor: pointer;
+}
+
+#btnStart {
+    margin: 5px;
+}
+
+.playable {
+    width: 80%;
+    filter: saturate(30%);
+    user-select: none;
+}
+
+.nonplayableCard {
+    width: 80%;
+    filter: blur(1px);
+    user-select: none;
+}
+
+.playable:hover, .playableHand:hover {
+    cursor: pointer;
+    border: 1px solid transparent;  /* makes it smaller */
+}
+
+.playableHand {
+    width: 5%;
+    user-select: none;
+}
+
+#infoRotations {
+    display: none;
+    font-weight: bold;
+}
+
+#message {
+    display: none;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+#oracleMessage {
+    font-size: 150%;
+    color: rebeccapurple;
+    font-weight: bold;
+}
+
+#divScore {
+    display: none;
+    font-size: 120%;
+    font-weight: bold;
+    position: absolute;
+    right: 30%;
+}
+
+#btnOracle {
+    background: purple;
+    position: absolute;
+    right: 5%;
+    top: 1vh;
+}
+
+#btnOracle:hover {
+    background: #600060;
+}
+
+#redo {
+    display: none;
+}
+
+.popover {
+    background: #fa00fa !important;
+    color: white !important;
+    font-weight: bold !important;
+}
+
+#gameControls {
+    display: none;
+    margin-left: 20%;
+}
