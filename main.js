@@ -159,13 +159,14 @@ function initUIBoard() {
 }
 
 function initUIHand() {
-    let cell = $("#divHand");  // hand (the separate cards)
+    let cell = $("#divHand");
     let content = "<img class='playableHand' id='playHand' alt='hand card loading...' src=''>";
     cell.html(content);
 }
 
 function initUIStats() {
-    $("#btnStart").hide();  // stats
+    $("#initialMenu").hide();
+    $("#gameTitle").hide();
     $("#btnNextHand").show();
     $("#infoRotations").show();
     $("#divScore").show();
@@ -248,7 +249,7 @@ function updateScore() {
     score += toAdd;
 }
 
-function giveTempMessage(msg, color="blue") {
+function giveTempMessage(msg, color="#7FCDCD") {
     /**
      * Send the user a message which will be displayed for 5 seconds
      */
@@ -742,6 +743,8 @@ function endgame(result) {
 
     $("#btnNextHand").hide();
     $("#btnStart").show();
+    $("#btnStart").html('Play again');
+    $("#initialMenu").show();
 }
 
 function play(lin, col) {
@@ -777,7 +780,7 @@ function play(lin, col) {
             resetHintTimeout();
         }
         else {  // sum isn't 13 -- give message
-            giveTempMessage("The cards should add to 13", "navy");
+            giveTempMessage("The cards should add to 13", "#BC243C");
         }
         chosen = [[-1, -1], [-1, -1]];
 

@@ -15,8 +15,13 @@
 </head>
 <body onload="enablePopovers();">
     <div id="divBoard"></div>  <!-- the board -->
-    <div style="margin-left: 30%; margin-right: 30%; text-align: center;">
-        <button onclick="startGame();" id="btnStart" class="btn btn-outline-primary btn-block btn-lg">Start game</button>
+    <div id="initialMenu" style="margin-left: 30%; margin-right: 30%; text-align: center;">
+        <div id="gameTitle">
+            Pyramid Solitaire
+        </div>
+        <div id="divBtnStart">
+            <button onclick="startGame();" id="btnStart" class="btn btn-outline-light btn-block btn-lg">Play</button>
+        </div>
     </div>
 
     <!-- will be on the right -->
@@ -48,5 +53,9 @@
             <!-- send messages to the player -->
         </div>
     </div>
+
+    <footer>
+        Made by <a href="https://github.com/LauranDvd" target="_blank">David Lauran</a>
+    </footer>
 </body>
 </html>
