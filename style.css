@@ -9,6 +9,7 @@ footer {
     bottom: 5px;
     height: 30px;
     color: white;
+    font-weight: bold;
 }
 
 footer a {
@@ -40,7 +41,8 @@ footer a:hover {
 }
 
 .chosen {
-    border: 5px solid #ff6e6e !important;
+    /* border: 5px solid #ffcc00 !important; */
+    filter: invert(100%) !important;
 }
 
 @keyframes fadeIn {
@@ -70,6 +72,11 @@ footer a:hover {
     cursor: pointer;
 }
 
+#divBtnStart {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 #btnStart {
     margin-top: 10px;
     border: 5px solid #8d008d;
@@ -88,10 +95,18 @@ footer a:hover {
     background: antiquewhite;
 }
 
-#divBtnStart {
-    margin-left: 20%;
-    margin-right: 20%;
+#helpMainMenu {
+    font-size: 150%;
+    margin-left: 80%;
+    color: floralwhite;
+    opacity: 0.5;
 }
+
+#helpMainMenu:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
 
 #gameTitle {
     font-family: "Sylfaen";  /* alternatives: Engravers MT, MingLiU-ExtB */
@@ -101,10 +116,21 @@ footer a:hover {
     font-weight: bold;
 }
 
+@keyframes smoothSizeReduction80To77 {
+    from {width: 80%;}
+    to {width: 77%;}
+}
+
+@keyframes smoothSizeReduction5ToEpsilon {
+    from {width: 5%;}
+    to {width: 4.8%;}
+}
+
 .playable {
     width: 80%;
     filter: saturate(30%);
     user-select: none;
+    transition: ease-in-out;
 }
 
 .nonplayableCard {
@@ -113,14 +139,21 @@ footer a:hover {
     user-select: none;
 }
 
-.playable:hover, .playableHand:hover {
+.playable:hover {
+    width: 77%;
     cursor: pointer;
-    border: 1px solid transparent;  /* makes it smaller */
+    animation: smoothSizeReduction80To77 0.2s;
 }
 
 .playableHand {
     width: 5%;
     user-select: none;
+}
+
+.playableHand:hover {
+    width: 4.8%;
+    cursor: pointer;
+    animation: smoothSizeReduction5ToEpsilon 0.2s;
 }
 
 #infoRotations {
@@ -153,6 +186,7 @@ footer a:hover {
     position: absolute;
     right: 5%;
     top: 1vh;
+    border-color: antiquewhite;
 }
 
 #btnOracle:hover {
@@ -173,4 +207,3 @@ footer a:hover {
     display: none;
     margin-left: 20%;
 }
-

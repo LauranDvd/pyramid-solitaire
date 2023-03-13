@@ -541,7 +541,9 @@ function strMove(move) {
     let ans = "";
     if (move[0][0] <= 6) {
         let card = board[move[0][0]][move[0][1]];
+        ans += "<i>";
         ans += numberDict[card[0]] + " of " +  colorDict[card[1]];
+        ans += "</i>";
     }
     else
         ans += 'handcard';
@@ -550,7 +552,9 @@ function strMove(move) {
         ans += " with ";
         if (move[1][0] <= 6) {
             let card = board[move[1][0]][move[1][1]];
+            ans += "<i>";
             ans += numberDict[card[0]] + " of " + colorDict[card[1]];
+            ans += "</i>";
         }
         else
             ans += 'handcard';
@@ -564,18 +568,18 @@ function writeOracle(moves) {
      * tell the user the winning sequence of moves
      */
     let oracle = $("#btnOracle");
+    let popoverObj = $(".popover-body");
 
     if (moves === -1) {
         oracle.popover('show');
         if (bktIterations > MAX_BKT_ITER)
             oracle.attr("data-content", "The oracle couldn't find anything :(");
-        else if (maxNoMoves > MAX_MOVES) {  // improbable
+        else if (maxNoMoves > MAX_MOVES)  // improbable
             oracle.attr("data-content", "This game can't be won in at most 50 moves.");
-        }
         else {  // it stopped because it exhausted all possibilities
             oracle.attr("data-content", "The oracle is pretty sure this game can't be won.");
-            $(".popover-body").css('background', 'red');
-            $(".popover-body").css('color', 'white');
+            popoverObj.css('background', 'red');
+            popoverObj.css('color', 'white');
         }
         oracle.popover('show');
         return;
@@ -602,11 +606,9 @@ function writeOracle(moves) {
         }
     }
     oracle.attr("data-content", content);
-    $(".popover-body").css('background', '#fa00fa');
-    $(".popover-body").css('color', 'black');
     oracle.popover('show');
-
-    console.log(bktIterations);  // debugging
+    popoverObj.css('background', '#fa00fa');
+    popoverObj.css('color', 'black');
 }
 
 function resetHintTimeout() {
@@ -649,11 +651,8 @@ function checkWinPassively() {
     let oldMaxBktIter = MAX_BKT_ITER;
     MAX_BKT_ITER = MAX_BKT_ITER / 100;  // we want this checking to finish unnoticed
     let checkWinResult = checkWin(true);
-    console.log(checkWinResult);
-    if (checkWinResult[checkWinResult.length - 1] === -1 && bktIterations < MAX_BKT_ITER && maxNoMoves < MAX_MOVES) {
-        // if the oracle went through all possible paths
-        writeOracle(-1);
-    }
+    if (checkWinResult[checkWinResult.length - 1] === -1 && bktIterations < MAX_BKT_ITER && maxNoMoves < MAX_MOVES)
+        writeOracle(-1);  // if the oracle went through all possible paths
     MAX_BKT_ITER = oldMaxBktIter;
 }
 
