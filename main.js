@@ -1,5 +1,3 @@
-// todo: "i" button (info) for how the score is calculated (ca pe siteul globalismului)
-
 let score;
 let board, hand;  // "hand" are the separate cards
 let handIndex;
